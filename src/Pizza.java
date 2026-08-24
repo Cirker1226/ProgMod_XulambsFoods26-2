@@ -4,7 +4,6 @@ public class Pizza {
 	static final double VALOR_INGREDIENTE;
 
     static int pizzasVendidas;
-    final String descricao;
 
     int quantidadeIngredientes;
 
@@ -22,12 +21,10 @@ public class Pizza {
 
 	public Pizza() {
 		init(0);
-        descricao = "Pizza sem adicionais";
 	}
 
 	public Pizza(int adicionais) {
 		init(adicionais);
-        descricao = "Pizza com "+adicionais+" ingredientes";
 	}
 
 	public double calcularValorFinal() {
