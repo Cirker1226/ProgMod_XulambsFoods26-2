@@ -36,12 +36,12 @@ public class Pizza {
 	}
 
 	public String gerarCupom() {
-		String cupom = "Xulambs Pizza!!!\n";
+		String cupom = "";
         
         cupom += String.format("Pizza com %d ingredientes\n",      quantidadeIngredientes);
 
-        cupom += String.format("\tPreço base: R$ %.2f\n", PRECO_BASE);
-        cupom += String.format("\tAdicionais: R$ %.2f\n", calcularValorAdicionais());
+        cupom += String.format("Preço base: R$ %.2f\n", PRECO_BASE);
+        cupom += String.format("Adicionais: R$ %.2f\n", calcularValorAdicionais());
         cupom += String.format("VALOR A PAGAR: R$ %.2f", calcularValorFinal());
 
         return cupom;
