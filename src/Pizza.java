@@ -34,7 +34,7 @@ public class Pizza {
 
     /** Demonstração de atributo static */
     static int pizzasVendidas;
-    
+
     int quantidadeIngredientes;
 
     /**
@@ -61,7 +61,7 @@ public class Pizza {
      */
 	public Pizza() {
 		init(0);
-    }
+	}
 
     /**
      * Cria uma pizza com os adicionais especificados. Se o valor for inválido,
@@ -70,7 +70,7 @@ public class Pizza {
      */
 	public Pizza(int adicionais) {
 		init(adicionais);
-    }
+	}
 
     /**
      * Retorna o preço a se pagar por uma pizza. (base + valor dos adicionais)
