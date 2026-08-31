@@ -1,12 +1,11 @@
 public class Pizza {
-    static final double PRECO_BASE;
-	static final int MAXIMO_INGREDIENTES;
-	static final double VALOR_INGREDIENTE;
+    private static final double PRECO_BASE;
+	private static final int MAXIMO_INGREDIENTES;
+	private static final double VALOR_INGREDIENTE;
 
-    static int pizzasVendidas;
+    private static int pizzasVendidas;
     
-
-    int quantidadeIngredientes;
+    private int quantidadeIngredientes;
 
     static{
         PRECO_BASE = 29;
@@ -15,7 +14,11 @@ public class Pizza {
         pizzasVendidas = 0;
     }
 
-    void init(int adicionais) {
+    public static int getPizzasVendidas(){
+        return pizzasVendidas;
+    }
+
+    private void init(int adicionais) {
 		 adicionarIngredientes(adicionais);
          pizzasVendidas++;
     }
@@ -32,7 +35,7 @@ public class Pizza {
 		return PRECO_BASE + calcularValorAdicionais();
 	}
 
-	public double calcularValorAdicionais() {
+	private double calcularValorAdicionais() {
 		return quantidadeIngredientes * VALOR_INGREDIENTE;
 	}
 
@@ -55,11 +58,17 @@ public class Pizza {
      * @param quantidade Ingredientes a serem adicionados
      * @return TRUE se a quantidade for >=0 e o total <=8, FALSE para casos contrários.
      */
-	public boolean podeAdicionar(int quantidade) {
+	private boolean podeAdicionar(int quantidade) {
         return quantidade >=0
                && quantidade + quantidadeIngredientes <= MAXIMO_INGREDIENTES;
     }
 
+    /**
+     * Tenta adicionar a quantidade de ingredientes na pizza.
+     * Em caso de valores inválidos, ignora a operação.
+     * @param quantidade Inteiro não negativo
+     * @return A quantatidade de adicionais na pizza após a execução do método.
+     */
 	public int adicionarIngredientes(int quantidade) {
 		if(podeAdicionar(quantidade)){
             quantidadeIngredientes += quantidade;
