@@ -15,7 +15,7 @@ public class XulambsApp {
 
     private void cabecalho(){
         limparTela();
-        IO.println("XULAMBS PIZZA - v0.11");
+        IO.println("XULAMBS PIZZA - v0.2");
         IO.println("=====================");
         IO.println("Pizzas vendidas hoje: " +
                     Pizza.getPizzasVendidas());
@@ -23,15 +23,17 @@ public class XulambsApp {
 
     private int exibirMenu() {
         cabecalho();
-        IO.println("1 - Comprar pizza");
-        IO.println("2 - Ver todas as pizzas");
+        IO.println("1 - Abrir pedido");
+        IO.println("2 - Alterar pedido");
+        IO.println("3 - Relatorio de um pedido");
+        IO.println("4 - Fechar pedido");
         IO.println("0 - Sair");
         return Integer.parseInt(IO.readln("Digite sua opção: "));
     }
 
 
 
-    void comprarPizza(){
+    Pizza comprarPizza(){
         cabecalho();
         int adicionais = 
             Integer.parseInt(IO.readln("Quantos ingredientes? "));
@@ -40,7 +42,7 @@ public class XulambsApp {
         nova.adicionarIngredientes(adicionais);
 
         mostrarNota(nova);
-        listaPizzas.add(nova);
+        return nova;
     }
 
     void mostrarNota(Pizza pizza){
@@ -56,14 +58,31 @@ public class XulambsApp {
         }
     }
 
+    void abrirPedido() {
+        String novaPizza = "";
+        Pedido novoPedido = new Pedido();
+
+        do {
+            Pizza Pizza = comprarPizza();
+            novoPedido.adicionarPizza(Pizza);
+            novaPizza = IO.readln("Deseja realizar a compra de outra pizza? (s/n)");
+        } while (novaPizza.equals("s"));
+
+        // exibirRelatorio(novoPedido);
+        // armazenarPedido(novoPedido);
+
+    }
+
     void main(){
         int opcao;
         listaPizzas = new LinkedList<>();
         do {
             opcao = exibirMenu();
             switch (opcao) {
-                case 1 -> comprarPizza();
-                case 2 -> mostrarPizzas();
+                case 1 -> abrirPedido();
+                // case 2 -> alterarPedido();
+                // case 3 -> relatorioPedido();
+                // case 4 -> encerrarPedido();
                 case 0 -> IO.println("Encerrando!");
                 default -> IO.println("Opção inválida");
             }   
